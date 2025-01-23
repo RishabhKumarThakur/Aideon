@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI.deon Tech</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4faff;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #1a202c;
+            color: #ffffff;
+            padding: 5rem 2rem;
+            text-align: center;
+            animation: slideDownFadeIn 2s ease-in-out;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin: 0;
+            animation: zoomIn 1.5s ease-in-out;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            color: #e2e8f0;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        .cta-button {
+            padding: 1rem 3rem;
+            background-color: #3182ce;
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 2rem;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        /* Animations */
+        @keyframes slideDownFadeIn { 0% { opacity: 0; transform: translateY(-50px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes zoomIn { 0% { opacity: 0; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1); } }
+
+        /* Hero Section */
+        .hero { text-align: center; padding: 3rem 2rem; background: linear-gradient(135deg, #e7f3ff, #cde7ff); border-radius: 10px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); }
+        .hero h2 { font-size: 3rem; color: #2c5282; }
+        .hero p { margin: 1.5rem 0; color: #4a5568; }
+        .hero a { padding: 1rem 3rem; background-color: #3182ce; color: #fff; border-radius: 50px; text-decoration: none; }
+
+        /* Features Section */
+        .features { padding: 4rem 2rem; text-align: center; }
+        .features h2 { color: #2c5282; font-size: 2.5rem; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .feature-card { background: #fff; padding: 2rem; border-radius: 10px; text-align: center; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); }
+        .feature-card i { font-size: 3rem; color: #2c5282; margin-bottom: 1rem; }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 4rem 2rem;
+            background-color: #f4faff;
+            text-align: center;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+        .testimonials h2 {
+            font-size: 2.5rem;
+            color: #2c5282;
+            margin-bottom: 2rem;
+        }
+        .testimonial-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .testimonial-card {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .testimonial-card .quote {
+            font-size: 2rem;
+            color: #3182ce;
+            margin-bottom: 1rem;
+        }
+        .testimonial-card p {
+            font-size: 1.2rem;
+            color: #4a5568;
+            margin-bottom: 1rem;
+        }
+        .testimonial-card .author {
+            font-weight: bold;
+            color: #2c5282;
+        }
+
+        /* FAQ Section */
+        .faqs {
+            padding: 4rem 2rem;
+            background-color: #f4faff;
+        }
+        .faqs h2 {
+            font-size: 2.5rem;
+            color: #2c5282;
+            margin-bottom: 2rem;
+        }
+        .faq-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            background-color: #e7f3ff;
+        }
+        .faq-item h3 {
+            font-size: 1.5rem;
+            color: #3182ce;
+            margin: 0;
+        }
+        .faq-item p {
+            display: none;
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-top: 1rem;
+        }
+        .faq-item.active p {
+            display: block;
+        }
+
+        /* Contact Section */
+        .contact { padding: 4rem 2rem; text-align: center; }
+        .contact h2 { font-size: 2.5rem; color: #2c5282; margin-bottom: 1.5rem; }
+
+        .personal-details { 
+            background-color: #e7f3ff; 
+            color: #2d3748; 
+            text-align: center; 
+            padding: 4rem 2rem; 
+            border-radius: 10px; 
+            margin-top: 4rem; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+        }
+        .personal-details h2 { 
+            font-size: 2.5rem; 
+            margin-bottom: 1.5rem; 
+            color: #3182ce; 
+        }
+
+        .details-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.2rem;
+            color: #4a5568;
+        }
+
+        .detail-item i {
+            font-size: 1.8rem;
+            color: #3182ce;
+        }
+
+        .detail-item p {
+            margin: 0;
+        }
+
+        .detail-item span {
+            font-weight: bold;
+            color: #2c5282;
+        }
+
+        .detail-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        iframe { 
+            border: 0; 
+            width: 100%; 
+            height: 300px; 
+            margin-top: 1.5rem; 
+            border-radius: 10px; 
+        }
+
+        /* Footer Section */
+        footer { background: #1a202c; color: #fff; padding: 2rem 0; text-align: center; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 { font-size: 3rem; }
+            header p { font-size: 1.2rem; }
+            .hero h2 { font-size: 2.5rem; }
+            .cta-button { padding: 0.8rem 2rem; }
+            .features h2, .testimonials h2 { font-size: 2rem; }
+            .features-grid, .testimonial-cards { grid-template-columns: 1fr; }
+            .faq-item h3 { font-size: 1.2rem; }
+            iframe { height: 250px; }
+        }
+
+        @media (max-width: 480px) {
+            header h1 { font-size: 2.5rem; }
+            header p { font-size: 1rem; }
+            .cta-button { padding: 0.8rem 1.5rem; }
+            .hero h2 { font-size: 2rem; }
+            .personal-details h2 { font-size: 2rem; }
+            .details-card { padding: 1rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Welcome to AI.deon</h1>
+        <p>Empowering businesses with the future of AI technology</p>
+        <a href="#personal-details" class="cta-button">Get Started</a>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <h2>Revolutionize Your Business with AI</h2>
+            <p>AI.deon Tech provides innovative AI-driven solutions designed to streamline operations, boost productivity, and help your business grow.</p>
+            <a href="#personal-details" class="cta-button">Learn more</a>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <h2>What people Say</h2>
+            <div class="testimonial-cards">
+                <div class="testimonial-card">
+                    <div class="quote">"AI.deon transformed our business operations."</div>
+                    <p>Our business became more efficient and streamlined. The results were impressive!</p>
+                    <div class="author">Poonam Thakur, Working professional </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">"We saw a 30% boost in productivity within the first quarter!"</div>
+                    <p>Thanks to AI.deon, our operations run smoothly and efficiently!</p>
+                    <div class="author">Sumit Kumar, Bank Consultant</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQs -->
+        <section class="faqs">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>What services does AI.deon Tech offer?</h3>
+                <p>We provide AI-driven solutions, advanced analytics, and real-time automation tools to help businesses streamline operations.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How can I get started?</h3>
+                <p>You can contact us using the form below or call us directly to schedule a consultation.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is there customer support available?</h3>
+                <p>Yes, we offer 24/7 customer support for all our clients.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section with Personal Details -->
+        <section class="personal-details" id="personal-details">
+            <h2>Contact Details</h2>
+            <div class="details-card">
+                <div class="detail-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <p><span>Phone:</span> +91 9853191211</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-envelope"></i>
+                    <p><span>Email:</span> rishabh.thakur4u@gmail.com</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p><span>Location:</span> Hyderabad, India - 500032</p>
+                </div>
+            </div>
+        </section>
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387140.8400851404!2d78.474604!3d17.385044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x12345!2sHyderabad!5e0!3m2!1sen!2sin!4v1672940273458!5m2!1sen!2sin" allowfullscreen></iframe>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+
+        <p>Made by Rishabh, with love ❤️</p>
+        <p>&copy;2025 AI.deon. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // FAQ Toggle functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
